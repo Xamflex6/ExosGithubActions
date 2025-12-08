@@ -1,0 +1,19 @@
+name: Variables dynamiques
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    env:
+      VARIABLE: jaune
+    steps:
+      - name: Affiche la valeur initiale
+        run: echo $VARIABLE
+      - name: Modifie la variable via GITHUB_ENV
+        run: |
+          echo "VARIABLE=vert" >> $GITHUB_ENV
+          echo $VARIABLE
+      - name: Affiche la valeur mise à jour
+        run: echo $VARIABLE
