@@ -4,10 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
-  pull_request:
-    paths:
-      - '**/*.yml'
-      - '!**/test/**'
 
 jobs:
   job_ex1:
