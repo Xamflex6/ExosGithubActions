@@ -7,12 +7,17 @@ jobs:
   show-time:
     runs-on: ubuntu-latest
     steps:
-      - name: Get current time (marketplace)
-        id: time
-        uses: zcong1993/actions-get-current-time@v1
-      - name: Print time in French
-        env:
-          DATE: ${{ steps.time.outputs.time }}
-        run: |
-          echo "ISO: $DATE"
-          node -e "const d=new Date(process.env.DATE); console.log(d.toLocaleString('fr-FR',{dateStyle:'full', timeStyle:'medium'}))"
+      - name: Get current time
+      uses: josStorer/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYYMMDD-HH
+        utcOffset: "+08:00"
+    - name: Use current time
+      env:
+      TIME: "${{ steps.current-time.outputs.time }}"
+      R_TIME: "${{ steps.current-time.outputs.readableTime }}"
+      F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
+      YEAR: "${{ steps.current-time.outputs.year }}"
+      DAY: "${{ steps.current-time.outputs.day }}"
+    run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
