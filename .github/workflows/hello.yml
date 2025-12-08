@@ -1,13 +1,14 @@
-name: Exercice 1
+name: Exercice 2
 
 on:
-  push:
-    branches: ["**"]
   pull_request:
-    branches: ["main"]
+    paths:
+      - '**/*.yml'
+    paths-ignore:
+      - '**/test/**'
 
 jobs:
   job_ex1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Je teste l'exercice 1"
+      - run: echo "Je vérifie les fichiers YAML"
