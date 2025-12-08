@@ -17,3 +17,8 @@ jobs:
           echo $VARIABLE
       - name: Affiche la valeur mise à jour
         run: echo $VARIABLE
+      - name: Définir une sortie avec set-output (déprécié)
+        id: monStep
+        run: echo "::set-output name=NOMVARIABLE::hello"
+      - name: Lire la sortie de l'étape précédente
+        run: echo "${{ steps.monStep.outputs.NOMVARIABLE }}"
