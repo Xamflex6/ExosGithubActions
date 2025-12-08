@@ -4,8 +4,7 @@ on:
   pull_request:
     paths:
       - '**/*.yml'
-    paths-ignore:
-      - '**/test/**'
+      - '!**/test/**'
 
 jobs:
   job_ex1:
